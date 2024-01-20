@@ -8,7 +8,7 @@ with open('openaiapikey.txt', 'r') as infile:
     openai.api_key = infile.read()
 
 
-def gpt3_completion(prompt, engine='text-davinci-002', temp=0.5, top_p=1.0, tokens=1000, freq_pen=0.0, pres_pen=0.0, stop=['asdfasdf']):
+def gpt3_completion(prompt, engine='babbage-002', temp=0.5, top_p=1.0, tokens=1000, freq_pen=0.0, pres_pen=0.0, stop=['asdfasdf']):
     max_retry = 5
     retry = 0
     while True:
@@ -18,10 +18,6 @@ def gpt3_completion(prompt, engine='text-davinci-002', temp=0.5, top_p=1.0, toke
                 #model=engine,           # use this for finetuned model
                 prompt=prompt,
                 temperature=temp,
-                max_tokens=tokens,
-                top_p=top_p,
-                frequency_penalty=freq_pen,
-                presence_penalty=pres_pen,
                 stop=stop)
             text = response['choices'][0]['text'].strip()
             #text = re.sub('\s+', ' ', text)

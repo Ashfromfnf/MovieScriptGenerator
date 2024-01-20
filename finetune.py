@@ -19,7 +19,7 @@ def file_list():
     pprint(resp)
 
 
-def finetune_model(fileid, suffix, model='davinci'):
+def finetune_model(fileid, suffix, model='gpt-3'):
     header = {'Content-Type': 'application/json', 'Authorization': 'Bearer %s' % open_ai_api_key}
     payload = {'training_file': fileid, 'model': model, 'suffix': suffix}
     resp = requests.request(method='POST', url='https://api.openai.com/v1/fine-tunes', json=payload, headers=header, timeout=45)
